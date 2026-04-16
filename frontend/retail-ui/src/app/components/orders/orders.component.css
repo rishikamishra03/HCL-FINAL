@@ -1,0 +1,36 @@
+.order-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition);
+}
+
+.order-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover);
+}
+
+.badge {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.text-secondary {
+  font-size: 0.9rem;
+}
+
+.text-success {
+  font-weight: 700;
+}
+
+.auth-card {
+  background: var(--bg-card);
+  padding: 3rem;
+  border-radius: var(--border-radius);
+  max-width: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}

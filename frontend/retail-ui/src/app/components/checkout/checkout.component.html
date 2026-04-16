@@ -1,0 +1,30 @@
+<div class="container mt-4 mb-4 d-flex justify-content-center">
+  <div class="checkout-card w-100" style="max-width: 600px;">
+    <h2 class="mb-3">Complete Your Order</h2>
+    
+    <div *ngIf="successMessage" class="success-msg mb-3">
+      <h3>🎉 {{ successMessage }}</h3>
+      <p>Your order ID is: #{{ orderId }}</p>
+      <button class="btn btn-primary mt-2" routerLink="/">Return Home</button>
+    </div>
+
+    <form *ngIf="!successMessage" (ngSubmit)="onCheckout()">
+      <div class="form-group">
+        <label class="form-label">Delivery Address</label>
+        <textarea class="form-control" rows="3" [(ngModel)]="deliveryAddress" name="address" required placeholder="Enter full delivery address"></textarea>
+      </div>
+
+      <div class="form-group mt-3">
+        <label class="form-label">Payment Method</label>
+        <select class="form-control" [(ngModel)]="paymentMethod" name="payment">
+          <option value="COD">Cash on Delivery (COD)</option>
+          <option value="CARD">Credit/Debit Card</option>
+        </select>
+      </div>
+
+      <div *ngIf="errorMessage" class="error-msg mb-3">{{ errorMessage }}</div>
+
+      <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="!deliveryAddress">Place Order Securely</button>
+    </form>
+  </div>
+</div>

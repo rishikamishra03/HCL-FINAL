@@ -1,0 +1,30 @@
+# .gitignore
+
+# Common
+node_modules/
+dist/
+.vscode/
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.idea/
+.DS_Store
+
+# Angular
+.angular/
+.sass-cache/
+connect.lock
+coverage/
+libpeerconnection.log
+npm-debug.log
+testem.log
+typings/
+
+# Environment
+.env
+.env.local
+.env.*.local

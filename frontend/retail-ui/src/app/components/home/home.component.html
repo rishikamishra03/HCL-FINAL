@@ -1,0 +1,46 @@
+<div class="hero-section text-center">
+  <div class="container">
+    <h1 class="display-title">Taste the Excellence</h1>
+    <p class="subtitle">Fresh hand-tossed Pizza, cooling Beverages & Artisan Breads delivered hot & fresh.</p>
+    <div class="d-flex justify-content-center gap-2 mt-3">
+      <button class="btn btn-primary" routerLink="/cart">Go to Cart</button>
+      <button class="btn btn-secondary" (click)="scrollToMenu()">View Menu</button>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 mb-4">
+  <div class="filters-container mb-3 d-flex gap-2">
+    <div class="filter-group">
+      <label class="form-label">Category</label>
+      <select class="form-control" (change)="onCategoryChange($event)">
+        <option value="">All Categories</option>
+        <option *ngFor="let cat of categories" [value]="cat.categoryId">{{cat.categoryName}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card" *ngFor="let product of products">
+      <div class="product-img-box">
+        <!-- Mock placeholder visually for wow effect -->
+        <div class="mock-img">🍔</div> 
+      </div>
+      <div class="product-details">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <span class="badge">{{product.category?.categoryName || 'General'}}</span>
+          <span class="price">${{product.basePrice | number:'1.2-2'}}</span>
+        </div>
+        <h3 class="product-title">{{product.productName}}</h3>
+        <p class="product-desc">{{product.description}}</p>
+        <button class="btn btn-primary w-100 mt-2" (click)="addToCart(product)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+    
+    <div *ngIf="products.length === 0" class="text-center w-100">
+      <p>No products found loading or starting the API yet.</p>
+    </div>
+  </div>
+</div>
