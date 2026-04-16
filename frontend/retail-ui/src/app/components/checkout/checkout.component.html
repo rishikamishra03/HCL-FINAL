@@ -5,7 +5,7 @@
     <div *ngIf="successMessage" class="success-msg mb-3">
       <h3>🎉 {{ successMessage }}</h3>
       <p>Your order ID is: #{{ orderId }}</p>
-      <button class="btn btn-primary mt-2" routerLink="/">Return Home</button>
+      <button class="btn btn-primary mt-2" routerLink="/dashboard">Return Home</button>
     </div>
 
     <form *ngIf="!successMessage" (ngSubmit)="onCheckout()">

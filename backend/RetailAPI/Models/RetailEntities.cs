@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace RetailAPI.Models
 {
@@ -81,6 +82,9 @@ namespace RetailAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductId { get; set; }
         public string ProductName { get; set; } = null!;
+        [NotMapped]
+        [JsonPropertyName("imageUrl")]
+        public string? ImageUrl { get; set; }
         public string? Description { get; set; }
         public decimal BasePrice { get; set; }
         public int? CategoryId { get; set; }

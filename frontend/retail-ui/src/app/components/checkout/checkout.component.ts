@@ -9,7 +9,7 @@ import { CartService } from '../../services/cart.service';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrl: './checkout.component.css'
 })
 export class CheckoutComponent {
   deliveryAddress = '';

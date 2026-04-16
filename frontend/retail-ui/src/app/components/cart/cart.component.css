@@ -5,15 +5,12 @@
   border: 1px solid rgba(255,255,255,0.05);
 }
 
-.product-icon {
-  font-size: 2.5rem;
-  background: rgba(0,0,0,0.2);
+.product-img-mini {
   width: 60px;
   height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
   border-radius: 8px;
+  background: #2a2a2a;
 }
 
 .quantity-badge {

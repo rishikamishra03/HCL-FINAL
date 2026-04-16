@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,9 +9,9 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  styleUrl: './auth.component.css'
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
   isLoginMode = true;
   errorMessage = '';
   formData = {
@@ -19,7 +20,13 @@ export class AuthComponent {
     password: ''
   };
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   toggleMode() {
     this.isLoginMode = !this.isLoginMode;

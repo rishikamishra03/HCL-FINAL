@@ -27,6 +27,7 @@ export interface Packaging {
 export interface Product {
   productId: number;
   productName: string;
+  imageUrl?: string;
   description: string;
   basePrice: number;
   categoryId: number;

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css']
+  styleUrl: './orders.component.css'
 })
 export class OrdersComponent implements OnInit {
   orders: any[] = [];

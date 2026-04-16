@@ -10,11 +10,13 @@ import { Product, Category } from '../../models/retail.model';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
   categories: Category[] = [];
+  activeCategoryId: number | null = null;
+  loading: boolean = false;
 
   constructor(private apiService: ApiService, private cartService: CartService) {}
 
@@ -31,15 +33,22 @@ export class HomeComponent implements OnInit {
   }
 
   loadProducts(categoryId?: number): void {
+    this.loading = true;
     this.apiService.getProducts(categoryId).subscribe({
-      next: res => this.products = res,
-      error: err => console.warn('Products not loaded', err)
+      next: res => {
+        this.products = res;
+        this.loading = false;
+      },
+      error: err => {
+        console.warn('Products not loaded', err);
+        this.loading = false;
+      }
     });
   }
 
-  onCategoryChange(event: any): void {
-    const catId = event.target.value;
-    this.loadProducts(catId ? Number(catId) : undefined);
+  onCategorySelect(catId: number | null): void {
+    this.activeCategoryId = catId;
+    this.loadProducts(catId !== null ? catId : undefined);
   }
 
   addToCart(product: Product): void {

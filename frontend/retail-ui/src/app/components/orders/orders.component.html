@@ -3,7 +3,7 @@
 
   <div *ngIf="orders.length === 0" class="text-center p-5 auth-card mx-auto">
     <h3>No orders found.</h3>
-    <button class="btn btn-primary mt-3" routerLink="/">Order some fresh Pizza!</button>
+    <button class="btn btn-primary mt-3" routerLink="/dashboard">Order some fresh Pizza!</button>
   </div>
 
   <div class="order-card p-3 mb-3" *ngFor="let order of orders">

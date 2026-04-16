@@ -29,7 +29,7 @@ export class AuthService {
         if (res && res.token) {
           localStorage.setItem('token', res.token);
           this.currentUserSubject.next(res);
-          this.router.navigate(['/']);
+          this.router.navigate(['/dashboard']);
         }
       })
     );
@@ -43,5 +43,9 @@ export class AuthService {
     localStorage.removeItem('token');
     this.currentUserSubject.next(null);
     this.router.navigate(['/auth']);
+  }
+
+  getProfile(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/profile`);
   }
 }

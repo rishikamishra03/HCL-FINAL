@@ -1,18 +1,19 @@
 <nav class="navbar">
   <div class="container d-flex justify-content-between align-items-center">
-    <a routerLink="/" class="navbar-brand">
+    <a routerLink="/dashboard" class="navbar-brand">
       <span class="logo-icon">🍕</span> RetailApp
     </a>
     
     <div class="nav-links d-flex align-items-center gap-3">
-      <a routerLink="/" class="nav-link">Menu</a>
+      <a routerLink="/dashboard" class="nav-link">Menu</a>
       <a *ngIf="isLoggedIn" routerLink="/cart" class="nav-link cart-link">
         🛒 Cart
       </a>
       <a *ngIf="isLoggedIn" routerLink="/orders" class="nav-link">My Orders</a>
       <a *ngIf="isLoggedIn" routerLink="/checkout" class="nav-link">Checkout</a>
       
-      <div class="auth-section">
+      <div class="auth-section d-flex align-items-center gap-2">
+        <span *ngIf="isLoggedIn" class="loyalty-badge">⭐ {{ user?.loyaltyPoints || 0 }} pts</span>
         <a *ngIf="!isLoggedIn" routerLink="/auth" class="btn btn-primary">Login</a>
         <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-secondary">Logout</button>
       </div>

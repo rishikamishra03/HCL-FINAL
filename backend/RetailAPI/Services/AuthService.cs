@@ -13,6 +13,7 @@ namespace RetailAPI.Services
     {
         Task<AuthResponse?> LoginAsync(LoginRequest request);
         Task<bool> RegisterAsync(RegisterRequest request);
+        Task<object?> GetProfileAsync(int userId);
     }
 
     public class AuthService : IAuthService
@@ -72,6 +73,20 @@ namespace RetailAPI.Services
             await _dbContext.Users.AddAsync(newUser);
             await _dbContext.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<object?> GetProfileAsync(int userId)
+        {
+            var user = await _dbContext.Users.FindAsync(userId);
+            if (user == null) return null;
+
+            var loyalty = await _dbContext.LoyaltyAccounts.FirstOrDefaultAsync(l => l.UserId == userId);
+            
+            return new {
+                user.FullName,
+                user.Email,
+                LoyaltyPoints = loyalty?.PointBalance ?? 0
+            };
         }
     }
 }

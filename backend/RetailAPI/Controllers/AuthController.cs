@@ -32,5 +32,19 @@ namespace RetailAPI.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("profile")]
+        [Microsoft.AspNetCore.Authorization.Authorize]
+        public async Task<IActionResult> GetProfile()
+        {
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var authService = (AuthService)_authService; // Casting to access internal DbContext for quick demo
+            
+            // In a real app we'd add this to the Interface properly
+            return await authService.GetProfileAsync(userId) switch {
+                null => NotFound(),
+                var profile => Ok(profile)
+            };
+        }
     }
 }
