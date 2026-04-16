@@ -1,3 +1,11 @@
+          BREWING CODE
+1.  Rishika Mishra
+2.  Saubhagya Mishra
+3.  SHAURYA
+4.  Ashutosh Kumar Yadav
+5.  Divy Rakshit Choudhary
+
+
 # Retail Ordering System - HCL Final Assessment
 
 A full-stack retail ordering platform for food items (Pizzas, Cold Drinks, and Breads) built with **ASP.NET Core API** and **Angular**.
@@ -20,7 +28,7 @@ A full-stack retail ordering platform for food items (Pizzas, Cold Drinks, and B
 ## 🛠️ Technology Stack
 
 ### Backend
-- **Framework**: ASP.NET Core 8.0
+- **Framework**: ASP.NET Core 10.0
 - **Database**: MySQL (RetailDB)
 - **ORM**: Entity Framework Core
 - **Security**: JWT Authentication, CORS enabled
